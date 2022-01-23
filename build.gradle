@@ -37,7 +37,8 @@ dependencies {
             'com.codeborne:selenide:5.25.0',
             'com.codeborne:pdf-test:1.7.0',
             'com.codeborne:xls-test:1.4.3',
-            'com.opencsv:opencsv:5.5.2'
+            'com.opencsv:opencsv:5.5.2',
+            'org.slf4j:slf4j-api:2.0.0-alpha6'
     )
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
 }

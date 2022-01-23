@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 public class ParameterizedWebTest {
 
+  //@ValueSource
   @ValueSource(strings = {"Ипотека", "Кредит"})
   @ParameterizedTest(name = "Тестирование общего алгоритма с тестовыми данными: {0} ")
   void searchByTwoParameters(String TestData) {
@@ -21,6 +22,7 @@ public class ParameterizedWebTest {
     Selenide.$(".l-page__col").shouldHave(Condition.text(TestData));
   }
 
+  //@CsvSource
   @CsvSource(value = {
           "Ипотека, Льготная ипотека с господдержкой — СберБанк",
           "Кредит, Ипотека на вторичное жилье — СберБанк"
@@ -34,14 +36,15 @@ public class ParameterizedWebTest {
     Selenide.$(".l-page__col").shouldHave(Condition.text(expectedResult));
   }
 
-  static Stream<Arguments> commandSearchTestData() {
+  //@MethodSource
+  static Stream<Arguments> commandSearchTestDataProvider() {
     return Stream.of(
             Arguments.of("Ипотека", "Льготная ипотека с господдержкой — СберБанк"),
             Arguments.of("Кредит", "Ипотека на вторичное жилье — СберБанк")
     );
   }
 
-  @MethodSource("commandSearchTestData")
+  @MethodSource("commandSearchTestDataProvider")
   @ParameterizedTest(name = "Тестирование общего алгоритма с тестовыми данными: {0} ")
   void commanSearch(String TestData, String expectedResult) {
     Selenide.open("https://www.sberbank.ru/ru/person");
