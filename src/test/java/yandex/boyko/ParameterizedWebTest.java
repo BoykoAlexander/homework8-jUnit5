@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
-//it's a parameterizedTest
+//it's a parameterizedTestы
 public class ParameterizedWebTest {
 
   //@ValueSource
